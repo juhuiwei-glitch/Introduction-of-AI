@@ -64,4 +64,20 @@ jobs:
           if [ -f index.html ]; then
             cp index.html dist/index.html
           else
-            echo "WARNING: index.html
+            echo "WARNING: index.html not found in repo root; dist/ has no landing page."
+          fi
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
