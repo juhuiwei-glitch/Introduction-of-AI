@@ -4,12 +4,23 @@ theme: default
 paginate: true
 ---
 
-# 人工智慧導論 (Day 1)
+# Section 1
 
-### 課程大綱
-1. 什麼是人工智慧？
-2. AI 的發展歷史
-3. AI 與智慧：AI 真的「懂」嗎？
+1. 什麼是人工智慧？  
+   - **人工智慧 (Artificial Intelligence, AI)**  
+   - **機器學習 (Machine Learning, ML)**  
+   - **深度學習 (Deep Learning, DL)**  
+
+2. AI 的發展  
+   - **符號式 AI (1950s–1970s)**  
+   - **機器學習時代 (1980s–1990s)**  
+   - **深度學習革命 (2010s–至今)**  
+   - 未來？  
+
+3. AI 與智慧：AI 真的「懂」嗎？  
+   - 什麼是「智慧」？  
+   - 圖靈測試 (Turing Test)
+
 
 ---
 
