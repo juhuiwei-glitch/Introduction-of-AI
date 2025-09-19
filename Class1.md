@@ -4,20 +4,20 @@ theme: default
 paginate: true
 ---
 
-# Section 1
+# 人工智慧簡介
 
-1. 什麼是人工智慧？  
-   - **人工智慧 (Artificial Intelligence, AI)**  
-   - **機器學習 (Machine Learning, ML)**  
-   - **深度學習 (Deep Learning, DL)**  
+1. **什麼是人工智慧？**  
+   - 人工智慧 (Artificial Intelligence, AI)
+   - 機器學習 (Machine Learning, ML)
+   - 深度學習 (Deep Learning, DL) 
 
-2. AI 的發展  
-   - **符號式 AI (1950s–1970s)**  
-   - **機器學習時代 (1980s–1990s)**  
-   - **深度學習革命 (2010s–至今)**  
+2. **AI 的發展**  
+   - 符號式 AI (1950s–1970s)  
+   - 機器學習時代 (1980s–1990s)  
+   - 深度學習革命 (2010s–至今) 
    - 未來？  
 
-3. AI 與智慧：AI 真的「懂」嗎？  
+3. **AI 與智慧：AI 真的「懂」嗎？**  
    - 什麼是「智慧」？  
    - 圖靈測試 (Turing Test)
 
