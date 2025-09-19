@@ -29,25 +29,39 @@ jobs:
       - name: Install Marp CLI
         run: npm install -g @marp-team/marp-cli
 
-      - name: Build slides (all *.md at repo root)
+      - name: Build all Markdown slides
         run: |
+          set -e
           mkdir -p dist
-          # Convert Class1.md into slides
-          marp --html --allow-local-files Class1.md -o dist/Class1.html
-          # Optional: make Class1 the default landing page
-          cp dist/Class1.html dist/index.html
+          shopt -s nullglob
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
+          # Build every top-level .md file into dist/*.html
+          for f in *.md; do
+            base="$(basename "$f" .md)"
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+            # Skip common non-slide files and drafts (prefix with "_")
+            case "$base" in
+              README|readme|LICENSE|CONTRIBUTING|CODE_OF_CONDUCT|SECURITY) continue ;;
+            esac
+            [[ "$base" == _* ]] && continue
+
+            echo "Building $f -> dist/${base}.html"
+            marp --html --allow-local-files "$f" -o "dist/${base}.html"
+          done
+
+          # OPTIONAL: also build slides under a docs/ folder (if you use it)
+          if [ -d docs ]; then
+            for f in docs/*.md; do
+              [ -e "$f" ] || continue
+              base="$(basename "$f" .md)"
+              [[ "$base" == _* ]] && continue
+              echo "Building $f -> dist/${base}.html"
+              marp --html --allow-local-files "$f" -o "dist/${base}.html"
+            done
+          fi
+
+          # Copy YOUR custom index.html from repo root so it won't be auto-generated
+          if [ -f index.html ]; then
+            cp index.html dist/index.html
+          else
+            echo "WARNING: index.html
